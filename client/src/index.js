@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import CreateUser from './Components/Users/Create';
 import IndexUser from './Components/Users/Index';
+import UpdateUser from './Components/Users/Update';
 
 
 
@@ -32,7 +33,8 @@ ReactDOM.render(
           </nav> <br/>
           
           <Switch>
-              <Route exact path='/createUser' component={ CreateUser } />            
+              <Route exact path='/createUser' component={ CreateUser } />  
+              <Route path='/editUser/:id' component={ UpdateUser } />          
               <Route path='/indexUser' component={ IndexUser } />
 
              
