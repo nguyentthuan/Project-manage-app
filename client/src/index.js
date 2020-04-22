@@ -8,7 +8,7 @@ import UpdateUser from './Components/Users/Update';
 
 import CreateProject from './Components/Projects/Create';
 import IndexProject from './Components/Projects/Index';
-
+import UpdateProject from './Components/Projects/Update';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -44,6 +44,7 @@ ReactDOM.render(
               <Route path='/indexUser' component={ IndexUser } />
 
               <Route exact path='/createProject' component={ CreateProject } />
+              <Route path='/editProject/:id' component={ UpdateProject } />
               <Route path='/indexProject' component={ IndexProject } />
           </Switch>
         </div>

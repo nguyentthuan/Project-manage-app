@@ -105,5 +105,36 @@ router.post('/projects/save', (req, res) => {
     });
 }); 
 
+// get update Project
+router.get('/projects/edit/:id', (req, res) => {
+
+    let id = req.params.id;
+    Projects.findById(id, function (err, project){
+        res.json(project);
+    });
+});
+
+//   post update project
+router.post('/projects/edit/:id', (req, res) => {
+    Projects.findById(req.params.id, function(err, project) {
+        if (!project)
+            res.status(404).send("data is not found");
+        else {
+            console.log(project);
+            project.name = req.body.name;
+            project.decription = req.body.decription;
+            project.chkMember = req.body.chkMember;
+
+            project.save().then(project => {
+                res.json('Update complete');
+            })
+                .catch(err => {
+                    res.status(400).send("unable to update the database");
+                });
+        }
+    });
+});
+
+
 
 module.exports = router;
