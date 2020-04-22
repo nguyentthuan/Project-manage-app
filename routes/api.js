@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const Users = require('../models/mUser');
+const Projects = require('../models/mProject');
 
 
 
@@ -36,7 +37,7 @@ router.post('/users/save', (req, res) => {
     });
 });
 
-//  Update route
+//  get update user
 router.get('/users/edit/:id', (req, res) => {
 
     let id = req.params.id;
@@ -45,7 +46,7 @@ router.get('/users/edit/:id', (req, res) => {
     });
 });
 
-//   update route
+//   post update user
 router.post('/users/edit/:id', (req, res) => {
     Users.findById(req.params.id, function(err, user) {
         if (!user)
@@ -73,6 +74,36 @@ router.get('/users/delete/:id', (req, res) => {
         else res.json('Successfully removed');
     });
 });
+
+                   //PROJECTS
+router.get('/projects', (req, res) => {
+
+    Projects.find({  })
+        .then((data) => {
+            console.log('Data: ', data);
+            res.json(data);
+        })
+        .catch((error) => {
+            console.log('error: ', error);
+        });
+});
+
+router.post('/projects/save', (req, res) => {
+    const data = req.body;
+
+    const newProject = new Projects(data);
+
+    newProject.save((error) => {
+        if (error) {
+            res.status(500).json({ msg: 'Sorry, internal server errors' });
+            return;
+        }
+        
+        return res.json({
+            msg: 'Your data has been saved!!!!!!'
+        });
+    });
+}); 
 
 
 module.exports = router;

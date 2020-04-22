@@ -6,7 +6,8 @@ import CreateUser from './Components/Users/Create';
 import IndexUser from './Components/Users/Index';
 import UpdateUser from './Components/Users/Update';
 
-
+import CreateProject from './Components/Projects/Create';
+import IndexProject from './Components/Projects/Index';
 
 
 import * as serviceWorker from './serviceWorker';
@@ -26,7 +27,12 @@ ReactDOM.render(
                   <Link to={'/indexUser'} className="nav-link">List User</Link>
                 </li>
 
-               
+                <li className="nav-item">
+                  <Link to={'/createProject'} className="nav-link">Create Project</Link>
+                </li>
+                <li className="nav-item">
+                   <Link to={'/indexProject'} className="nav-link">List Project</Link>
+                </li>
                 
               </ul>
             </div>
@@ -37,7 +43,8 @@ ReactDOM.render(
               <Route path='/editUser/:id' component={ UpdateUser } />          
               <Route path='/indexUser' component={ IndexUser } />
 
-             
+              <Route exact path='/createProject' component={ CreateProject } />
+              <Route path='/indexProject' component={ IndexProject } />
           </Switch>
         </div>
       </Router>
