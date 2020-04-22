@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-//import axios from 'axios';
+import axios from 'axios';
 
 class TableRow extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.delete = this.delete.bind(this);
-    // }
-    // delete() {
-    //     axios.get('/api/projects/delete/'+this.props.obj._id)
-    //         .then(console.log('Deleted'))
-    //         .catch(err => console.log(err))            
-    // }
+    constructor(props) {
+        super(props);
+        this.delete = this.delete.bind(this);
+    }
+    delete() {
+        axios.get('/api/projects/delete/'+this.props.obj._id)
+            .then(console.log('Deleted'))
+            .catch(err => console.log(err))  
+            alert("Deleted successfully, Reload the page..!");            
+    }
   render() {
     return (
         <tr>
@@ -32,7 +33,7 @@ class TableRow extends Component {
           <Link to={"/editProject/"+this.props.obj._id} className="btn btn-primary">Edit</Link>
           </td>
           <td>            
-             {/* <button onClick={this.delete} className="btn btn-danger">Delete</button> */}
+              <button onClick={this.delete} className="btn btn-danger">Delete</button> 
           </td>
         </tr>
     );

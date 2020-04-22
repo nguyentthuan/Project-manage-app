@@ -135,6 +135,15 @@ router.post('/projects/edit/:id', (req, res) => {
     });
 });
 
+//delete project
+router.get('/projects/delete/:id', (req, res) => {
+
+    Projects.findByIdAndRemove({_id: req.params.id}, function(err, project){
+        if(err) res.json(err);
+        else res.json('Successfully removed');
+    });
+});
+
 
 
 module.exports = router;
